@@ -1,12 +1,22 @@
 SpaceShip xWing = new SpaceShip();
 public void setup() 
 {
-  size(600,600);
+  size(1000,1000);
   background(0);
 }
 public void draw() 
 {
   xWing.show();
+}
+public void keyPressed()
+{
+  if (key == CODED)
+  {
+    if (keyCode == TAB)
+    {
+      xWing.setX((int)Math.random()*1000);
+    }
+  }
 }
 class SpaceShip extends Floater 
 {
@@ -24,8 +34,8 @@ class SpaceShip extends Floater
     xCorners[3] = -2;
     yCorners[3] = 0;
     myColor = 255;
-    myCenterX = 300;
-    myCenterY = 300;
+    myCenterX = 500;
+    myCenterY = 500;
     myDirectionX = 90;
     myDirectionY = 0;
     myPointDirection = 180;
