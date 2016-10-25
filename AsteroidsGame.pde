@@ -2,21 +2,25 @@ SpaceShip xWing = new SpaceShip();
 public void setup() 
 {
   size(1000,1000);
-  background(0);
 }
 public void draw() 
 {
+  background(0);
   xWing.show();
+  // xWing.accelerate();
 }
 public void keyPressed()
 {
-  if (key == CODED)
+  if (key == 'z') //hyperspace
   {
-    if (keyCode == TAB)
-    {
-      xWing.setX((int)Math.random()*1000);
-    }
+    xWing.setX((int)(Math.random()*1000));
+    xWing.setY((int)(Math.random()*1000));
   }
+  // if (key == CODED) {
+  //   if (keyCode == UP) {
+  //     xWing.accelerate(1);
+  //   }
+  // }
 }
 class SpaceShip extends Floater 
 {
@@ -38,7 +42,7 @@ class SpaceShip extends Floater
     myCenterY = 500;
     myDirectionX = 90;
     myDirectionY = 0;
-    myPointDirection = 180;
+    myPointDirection = 270;
 
     
   }
