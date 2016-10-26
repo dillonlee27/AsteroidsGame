@@ -1,4 +1,5 @@
 SpaceShip xWing = new SpaceShip();
+int x = 0;
 public void setup() 
 {
   size(1000,1000);
@@ -7,21 +8,50 @@ public void draw()
 {
   background(0);
   xWing.show();
-  // xWing.accelerate();
+  xWing.move();
 }
 public void keyPressed()
 {
-  if (key == 'z') //hyperspace
+  if (key == 'v') //hyperspace
   {
     xWing.setX((int)(Math.random()*1000));
     xWing.setY((int)(Math.random()*1000));
+    xWing.setPointDirection((int)(Math.random()*360));
+    xWing.myDirectionX = 0;
+    xWing.myDirectionY = 0;
   }
-  // if (key == CODED) {
-  //   if (keyCode == UP) {
-  //     xWing.accelerate(1);
-  //   }
-  // }
+  if (key == 'w') //accelerate forward
+  {
+    xWing.accelerate(0.1);
+  }
+  if (key == 's') //backwards
+  {
+    xWing.accelerate(-0.1);
+    // xWing.myDirectionX = 0;
+    // xWing.myDirectionY = 0;
+  }
+  if (key == 'a') //rotate left
+  {
+    xWing.rotate(x-15);
+  }
+  if (key == 'd') //rotate right
+  {
+    xWing.rotate(x+15);
+  }
 }
+
+// public void keyReleased()
+// {
+//   if (key == 's')
+//   {
+//     xWing.myDirectionX = 0;
+//     xWing.myDirectionY = 0;
+//   }
+// }
+
+
+
+
 class SpaceShip extends Floater 
 {
   SpaceShip()
@@ -40,7 +70,7 @@ class SpaceShip extends Floater
     myColor = 255;
     myCenterX = 500;
     myCenterY = 500;
-    myDirectionX = 90;
+    myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 270;
 
