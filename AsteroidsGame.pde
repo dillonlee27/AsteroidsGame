@@ -27,8 +27,6 @@ public void keyPressed()
   if (key == 's') //backwards
   {
     xWing.accelerate(-0.1);
-    // xWing.myDirectionX = 0;
-    // xWing.myDirectionY = 0;
   }
   if (key == 'a') //rotate left
   {
@@ -40,14 +38,15 @@ public void keyPressed()
   }
 }
 
-// public void keyReleased()
-// {
-//   if (key == 's')
-//   {
-//     xWing.myDirectionX = 0;
-//     xWing.myDirectionY = 0;
-//   }
-// }
+
+ public void keyReleased()
+ {
+   if (key == 's')
+   {
+     xWing.myDirectionX = 0;
+     xWing.myDirectionY = 0;
+   }
+ }
 
 
 
