@@ -1,14 +1,23 @@
 SpaceShip xWing = new SpaceShip();
+Star[] blackOut = new Star[200];
 int x = 0;
 public void setup() 
 {
   size(1000,1000);
+  for (int i = 0; i < blackOut.length; i++)
+  {
+    blackOut[i] = new Star();
+  }
 }
 public void draw() 
 {
   background(0);
   xWing.show();
   xWing.move();
+  for (int i =0; i < blackOut.length; i++)
+  {
+    blackOut[i].show();
+  }
 }
 public void keyPressed()
 {
@@ -48,9 +57,6 @@ public void keyPressed()
    }
  }
 
-
-
-
 class SpaceShip extends Floater 
 {
   SpaceShip()
@@ -72,11 +78,7 @@ class SpaceShip extends Floater
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 270;
-
-    
   }
-
-
   public void setX(int x) {myCenterX = x;}
   public int getX() {return (int)myCenterX;}
   public void setY(int y) {myCenterY = y;}
@@ -87,9 +89,33 @@ class SpaceShip extends Floater
   public double getDirectionY() {return myDirectionY;}
   public void setPointDirection(int degrees) {myPointDirection = degrees;}
   public double getPointDirection() {return myPointDirection;}
-
-
 }
+
+class Star 
+{
+  private int myX;
+  private int myY;
+  Star()
+  {
+    myX = (int)(Math.random()*1000);
+    myY = (int)(Math.random()*1000);
+  }
+  public void show()
+  {
+    ellipse(myX,myY,10,10);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
