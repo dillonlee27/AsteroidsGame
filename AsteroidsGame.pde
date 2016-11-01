@@ -3,7 +3,7 @@ Star[] blackOut = new Star[200];
 int x = 0;
 public void setup() 
 {
-  size(1000,1000);
+  size(800,800);
   for (int i = 0; i < blackOut.length; i++)
   {
     blackOut[i] = new Star();
@@ -102,7 +102,7 @@ class Star
   }
   public void show()
   {
-    ellipse(myX,myY,10,10);
+    ellipse(myX,myY,5,5);
   }
 }
 
