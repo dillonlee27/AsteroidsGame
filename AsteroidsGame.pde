@@ -1,5 +1,6 @@
 SpaceShip xWing = new SpaceShip();
 Star[] blackOut = new Star[200];
+Asteroids[] floatingRock = new Asteroids[50];
 int x = 0;
 public void setup() 
 {
@@ -8,6 +9,11 @@ public void setup()
   {
     blackOut[i] = new Star();
   }
+  for (int n = 0; n < floatingRock.length; n++)
+  {
+    floatingRock[n] = new Asteroids();
+  }
+
 }
 public void draw() 
 {
@@ -17,6 +23,11 @@ public void draw()
   for (int i =0; i < blackOut.length; i++)
   {
     blackOut[i].show();
+  }
+  for (int n = 0; n < floatingRock.length; n++)
+  {
+    floatingRock[n].show();
+    floatingRock[n].move();
   }
 }
 public void keyPressed()
@@ -59,7 +70,7 @@ public void keyPressed()
 
 class SpaceShip extends Floater 
 {
-  SpaceShip()
+  public SpaceShip()
   {
     corners = 4;
     xCorners = new int[corners];
@@ -72,9 +83,9 @@ class SpaceShip extends Floater
     yCorners[2] = 8;
     xCorners[3] = -2;
     yCorners[3] = 0;
-    myColor = 255;
-    myCenterX = 500;
-    myCenterY = 500;
+    myColor = color(0,204,0);
+    myCenterX = 400;
+    myCenterY = 400;
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 270;
@@ -91,6 +102,52 @@ class SpaceShip extends Floater
   public double getPointDirection() {return myPointDirection;}
 }
 
+class Asteroids extends Floater
+{
+  private int rotSpeed;
+  public Asteroids()
+  {
+    corners = 6;
+    xCorners = new int [corners];
+    yCorners = new int [corners];
+    xCorners[0] = -11;
+    yCorners[0] = -8;
+    xCorners[1] = 7;
+    yCorners[1] = -8;
+    xCorners[2] = 13;
+    yCorners[2] = 0;
+    xCorners[3] = 6;
+    yCorners[3] = 10;
+    xCorners[4] = -11;
+    yCorners[4] = 8;
+    xCorners[5] = -5;
+    yCorners[5] = 0;
+    myColor = 204;
+    myCenterX = Math.random()*800;
+    myCenterY = Math.random()*800;
+    myDirectionX = Math.random()*4-2;
+    myDirectionY = Math.random()*4-2;
+    myPointDirection = 0;
+    rotSpeed = (int)(Math.random()*3);
+  }
+  public void move()
+  {
+    rotate(rotSpeed);
+    super.move();
+  }
+  public void setX(int x) {myCenterX = x;}
+  public int getX() {return (int)myCenterX;}
+  public void setY(int y) {myCenterY = y;}
+  public int getY() {return (int)myCenterY;}
+  public void setDirectionX(double x) {myDirectionX = x;}
+  public double getDirectionX() {return myDirectionX;}
+  public void setDirectionY(double y) {myDirectionY = y;}
+  public double getDirectionY() {return myDirectionY;}
+  public void setPointDirection(int degrees) {myPointDirection = degrees;}
+  public double getPointDirection() {return myPointDirection;}
+}
+
+
 class Star 
 {
   private int myX;
@@ -102,19 +159,11 @@ class Star
   }
   public void show()
   {
-    ellipse(myX,myY,5,5);
+    fill(255,255,255);
+    ellipse(myX,myY,2.5,2.5);
+
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
