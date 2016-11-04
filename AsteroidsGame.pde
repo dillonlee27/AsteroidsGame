@@ -18,8 +18,6 @@ public void setup()
 public void draw() 
 {
   background(0);
-  xWing.show();
-  xWing.move();
   for (int i =0; i < blackOut.length; i++)
   {
     blackOut[i].show();
@@ -29,6 +27,8 @@ public void draw()
     floatingRock[n].show();
     floatingRock[n].move();
   }
+  xWing.show();
+  xWing.move();
 }
 public void keyPressed()
 {
@@ -122,11 +122,11 @@ class Asteroids extends Floater
     yCorners[4] = 8;
     xCorners[5] = -5;
     yCorners[5] = 0;
-    myColor = 204;
+    myColor = color(160,160,160);
     myCenterX = Math.random()*800;
     myCenterY = Math.random()*800;
-    myDirectionX = Math.random()*4-2;
-    myDirectionY = Math.random()*4-2;
+    myDirectionX = Math.random()*2-1;
+    myDirectionY = Math.random()*2-1;
     myPointDirection = 0;
     rotSpeed = (int)(Math.random()*3);
   }
@@ -152,16 +152,18 @@ class Star
 {
   private int myX;
   private int myY;
+  //private int starColor;
   Star()
   {
     myX = (int)(Math.random()*1000);
     myY = (int)(Math.random()*1000);
+    //starColor = color(255,255,255);
   }
   public void show()
   {
+    stroke(255,255,255);
     fill(255,255,255);
     ellipse(myX,myY,2.5,2.5);
-
   }
 }
 
