@@ -1,6 +1,6 @@
 SpaceShip xWing = new SpaceShip();
 Star[] blackOut = new Star[200];
-Asteroids[] floatingRock = new Asteroids[50];
+ArrayList <Asteroids> floatingRock;
 int x = 0;
 public void setup() 
 {
@@ -9,11 +9,16 @@ public void setup()
   {
     blackOut[i] = new Star();
   }
-  for (int n = 0; n < floatingRock.length; n++)
+  floatingRock = new ArrayList <Asteroids>();
+  for (int n =0; n < 25; n++)
   {
-    floatingRock[n] = new Asteroids();
+    floatingRock.add(new Asteroids());
   }
-
+  // for (int n = 0; n <)
+  // for (int n = 0; n < floatingRock.length; n++)
+  // {
+  //   floatingRock[n] = new Asteroids();
+  // }
 }
 public void draw() 
 {
@@ -22,11 +27,11 @@ public void draw()
   {
     blackOut[i].show();
   }
-  for (int n = 0; n < floatingRock.length; n++)
-  {
-    floatingRock[n].show();
-    floatingRock[n].move();
-  }
+  for (int n = 0; n < floatingRock.size(); n++)
+   {
+     floatingRock.get(n).show();
+     floatingRock.get(n).move();
+   }
   xWing.show();
   xWing.move();
 }
@@ -101,6 +106,7 @@ class SpaceShip extends Floater
   public void setPointDirection(int degrees) {myPointDirection = degrees;}
   public double getPointDirection() {return myPointDirection;}
 }
+
 
 class Asteroids extends Floater
 {
