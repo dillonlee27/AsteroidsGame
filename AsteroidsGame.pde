@@ -14,12 +14,8 @@ public void setup()
   {
     floatingRock.add(new Asteroids());
   }
-  // for (int n = 0; n <)
-  // for (int n = 0; n < floatingRock.length; n++)
-  // {
-  //   floatingRock[n] = new Asteroids();
-  // }
 }
+
 public void draw() 
 {
   background(0);
@@ -31,6 +27,10 @@ public void draw()
    {
      floatingRock.get(n).show();
      floatingRock.get(n).move();
+     if (dist(floatingRock.get(n).getX(), floatingRock.get(n).getY(), xWing.getX(), xWing.getY())<20)
+     {
+      floatingRock.remove(n);
+     }
    }
   xWing.show();
   xWing.move();
