@@ -1,6 +1,7 @@
 SpaceShip xWing = new SpaceShip();
 Star[] blackOut = new Star[200];
 ArrayList <Asteroids> floatingRock;
+ArrayList <Bullet> gun;
 int x = 0;
 public void setup() 
 {
@@ -13,6 +14,11 @@ public void setup()
   for (int n =0; n < 25; n++)
   {
     floatingRock.add(new Asteroids());
+  }
+  gun = new ArrayList <Bullet>();
+  for (int g = 0; g < 25; g++)
+  {
+    gun.add(new Bullet(xWing));
   }
 }
 
@@ -34,6 +40,8 @@ public void draw()
    }
   xWing.show();
   xWing.move();
+  gun.get(0).show();
+  gun.get(0).move();
 }
 public void keyPressed()
 {
@@ -60,6 +68,10 @@ public void keyPressed()
   if (key == 'd') //rotate right
   {
     xWing.rotate(x+15);
+  }
+  if (key == ' ')
+  {
+    gun.add(new Bullet(xWing));
   }
 }
 
