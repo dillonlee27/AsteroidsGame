@@ -16,32 +16,43 @@ public void setup()
     floatingRock.add(new Asteroids());
   }
   gun = new ArrayList <Bullet>();
-  for (int g = 0; g < 25; g++)
-  {
-    gun.add(new Bullet(xWing));
-  }
 }
 
 public void draw() 
 {
   background(0);
+  xWing.show();
+  xWing.move();
   for (int i =0; i < blackOut.length; i++)
   {
     blackOut[i].show();
   }
   for (int n = 0; n < floatingRock.size(); n++)
-   {
-     floatingRock.get(n).show();
-     floatingRock.get(n).move();
-     if (dist(floatingRock.get(n).getX(), floatingRock.get(n).getY(), xWing.getX(), xWing.getY())<20)
-     {
-      floatingRock.remove(n);
-     }
-   }
-  xWing.show();
-  xWing.move();
-  gun.get(0).show();
-  gun.get(0).move();
+  {
+    floatingRock.get(n).show();
+    floatingRock.get(n).move();
+  }
+  for (int g = 0; g < gun.size(); g++)
+  {
+    gun.get(g).show();
+    gun.get(g).move();
+  }
+  for (int t = 0; t < floatingRock.size(); t++)
+  {
+    for (int p = 0; p < gun.size(); p++)
+    if(dist(floatingRock.get(t).getX(), floatingRock.get(t).getY(), xWing.getX(), xWing.getY()) < 20)
+    {
+      floatingRock.remove(t);
+    }
+  }
+  //for (int p = 0; p < gun.size(); p++)
+  // {
+  //   if(dist(gun.get(p).getX(), gun.get(p).getY(), floatingRock.get(p).getX(), floatingRock.get(p).getY()) < 20)
+  //   {
+  //     floatingRock.remove(p);
+  //     gun.remove(p);
+  //   }
+  // }  
 }
 public void keyPressed()
 {
