@@ -40,9 +40,16 @@ public void draw()
   for (int t = 0; t < floatingRock.size(); t++)
   {
     for (int p = 0; p < gun.size(); p++)
-    if(dist(floatingRock.get(t).getX(), floatingRock.get(t).getY(), xWing.getX(), xWing.getY()) < 20)
     {
-      floatingRock.remove(t);
+      if(dist(floatingRock.get(t).getX(), floatingRock.get(t).getY(), xWing.getX(), xWing.getY()) < 20)
+      {
+        floatingRock.remove(t);
+      }
+      if (dist(gun.get(p).getX(), gun.get(p).getY(), floatingRock.get(t).getX(), floatingRock.get(t).getY()) < 20)
+      {
+        floatingRock.remove(t);
+        gun.remove(p);
+      }
     }
   }
   //for (int p = 0; p < gun.size(); p++)
