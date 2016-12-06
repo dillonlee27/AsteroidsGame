@@ -11,7 +11,7 @@ public void setup()
     blackOut[i] = new Star();
   }
   floatingRock = new ArrayList <Asteroids>();
-  for (int n =0; n < 25; n++)
+  for (int n =0; n < 40; n++)
   {
     floatingRock.add(new Asteroids());
   }
@@ -49,6 +49,7 @@ public void draw()
       {
         floatingRock.remove(t);
         gun.remove(p);
+        break;
       }
     }
   }
